@@ -7,8 +7,8 @@
 @prefix glycan: <http://purl.jp/bio/12/glyco/glycan#> .
 
 <http://www.glycoinfo.org/glyco/owl/relation> a owl:Ontology ;
-	<http://purl.org/dc/terms/date> "2017-12-04"^^rdfs:Literal ;
-	owl:versionInfo "0.3.0"^^xsd:string .
+	owl:versionInfo "0.4.0"^^xsd:string ;
+	<http://purl.org/dc/terms/date> "2017-12-04"^^rdfs:Literal .
 # 
 # 
 # #################################################################
@@ -55,6 +55,7 @@
 
 :has_composition_with_linkage a owl:ObjectProperty ;
 	rdfs:subPropertyOf :has_composition ;
+	rdfs:range :Base_composition_with_linkage ;
 	rdfs:label "has composition with linkage"@en .
 # 
 # http://www.glycoinfo.org/glyco/owl/relation#has_linkage_isomer
