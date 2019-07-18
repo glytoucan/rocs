@@ -7,7 +7,7 @@
 @prefix glycan: <http://purl.jp/bio/12/glyco/glycan#> .
 
 <http://www.glycoinfo.org/glyco/owl/relation> a owl:Ontology ;
-	owl:versionInfo "0.4.0"^^xsd:string ;
+	owl:versionInfo "0.5.0"^^xsd:string ;
 	<http://purl.org/dc/terms/date> "2017-12-04"^^rdfs:Literal .
 # 
 # 
@@ -39,17 +39,65 @@
 
 :has_base_composition a owl:ObjectProperty ;
 	rdfs:subPropertyOf :subsumed_by ;
-	rdfs:domain :Monosaccharide_composition ;
-	rdfs:range :Base_composition ;
-	rdfs:label "has base composition"@en .
+	rdfs:domain _:genid1 .
+
+_:genid1 a owl:Class ;
+	owl:unionOf _:genid3 .
+
+_:genid3 a rdf:List ;
+	rdf:first :Monosaccharide_composition ;
+	rdf:rest _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first :Monosaccharide_composition_with_linkage ;
+	rdf:rest rdf:nil .
+
+:has_base_composition rdfs:range _:genid4 .
+
+_:genid4 a owl:Class ;
+	owl:unionOf _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first :Base_composition ;
+	rdf:rest _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first :Base_composition_with_linkage ;
+	rdf:rest rdf:nil .
+
+:has_base_composition rdfs:label "has base composition"@en .
 # 
 # http://www.glycoinfo.org/glyco/owl/relation#has_composition
 
 :has_composition a owl:ObjectProperty ;
 	rdfs:subPropertyOf :subsumed_by ;
-	rdfs:domain :Glycosidic_topology ;
-	rdfs:range :Monosaccharide_composition ;
-	rdfs:label "has composition"@en .
+	rdfs:domain _:genid7 .
+
+_:genid7 a owl:Class ;
+	owl:unionOf _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first :Base_composition_with_linkage ;
+	rdf:rest _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first :Monosaccharide_composition_with_linkage ;
+	rdf:rest rdf:nil .
+
+:has_composition rdfs:range _:genid10 .
+
+_:genid10 a owl:Class ;
+	owl:unionOf _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first :Base_composition ;
+	rdf:rest _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first :Monosaccharide_composition ;
+	rdf:rest rdf:nil .
+
+:has_composition rdfs:label "has composition"@en .
 # 
 # http://www.glycoinfo.org/glyco/owl/relation#has_composition_with_linkage
 
